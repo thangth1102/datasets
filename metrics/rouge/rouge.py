@@ -113,8 +113,8 @@ class Rouge(datasets.Metric):
         else:
             scores = []
 
-        for ref, pred in zip(references, predictions):
-            score = scorer.score(ref, pred)
+        for pred, ref in zip(predictions, references):
+            score = scorer.score(pred, ref)
             if use_aggregator:
                 aggregator.add_scores(score)
             else:
